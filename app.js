@@ -9,6 +9,10 @@ app.get('/', (req, res)  => {
     res.redirect('/index.html');
 });
 
+app.get('/test', (req, res)  => {
+    res.redirect('/tests/test.html');
+});
+
 app.listen(app.get('port'), function() {
     console.log('Port: ', app.get('port'));
 });
