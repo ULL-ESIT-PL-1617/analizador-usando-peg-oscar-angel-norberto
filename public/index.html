@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Analizador usando PEG.js</title> 
+    
+    
+    <!--Gramatica exportada como global(variable: PEG): pegjs --format globals --export-var PEG grammar.pegjs -->
+    <script type="text/javascript" src="grammar.js"></script>
+    <!--Libreria util en local(variable: util) -->
+    <script type="text/javascript" src="index.min.js"></script> 
+    
+    <script >
+        window.onload = function() {
+            var getTree = function(input) {
+                var error = false;
+                
+                try {
+                    var tree = PEG.parse(input);
+                }
+                catch(e) {
+                    error = true;
+                    document.getElementById('output').innerHTML = e.message;
+                }
+                
+                if (!error) {
+                    document.getElementById('output').innerHTML = util.inspect(tree, {depth: null});
+                }
+            }
+            
+            document.getElementById('treeButton').onclick = function (e) {
+                getTree(document.getElementById('input').value);
+            };
+        };
+    </script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+<body>
+    
+    <h1>Analizador: Árbol de analisis sintáctico</h1>
+    
+    <div id="elements">
+        <div>
+            <textarea id="input" rows="10" cols="20"></textarea>
+        </div>
+       
+        <button id="treeButton">Obtener Arbol</button>
+    </div> 
+    
+    <div id=container>
+        <p>Árbol:</p>
+        <pre id="output"></pre>
+    </div>
+    
+    
+</body>
+    
+</html>

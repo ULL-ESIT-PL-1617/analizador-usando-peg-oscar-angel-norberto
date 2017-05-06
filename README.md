@@ -39,7 +39,7 @@
     8.  term → factor (MULOP factor) *
     9.  factor → '(' expression ')' | NUM | ID
     
-###Mejoras posibles?
+### Mejoras posibles?
 - if then else
 - for
 - class
@@ -56,13 +56,13 @@
         if a ==4 then a = 4 / 2
     end.
 
-###Ejemplo 2
+### Ejemplo 2
 
     const pi = 3.14;
     var a;
     a = pi.
 
-###Ejemplo 3
+### Ejemplo 3
 
     procedure b
     begin
@@ -71,7 +71,7 @@
     end
     call b.
 
-###Ejemplo 4
+### Ejemplo 4
 
     var x;
     begin     

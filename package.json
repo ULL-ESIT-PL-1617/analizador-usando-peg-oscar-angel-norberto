@@ -1,0 +1,23 @@
+{
+  "name": "analizador-usando-peg-oscar-angel-norberto",
+  "version": "1.0.0",
+  "description": "Analizador Usando PEG.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-PL-1617/analizador-usando-peg-oscar-angel-norberto/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-PL-1617/analizador-usando-peg-oscar-angel-norberto#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "util-browser": "0.0.2"
+  }
+}
