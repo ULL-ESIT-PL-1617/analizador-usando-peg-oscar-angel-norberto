@@ -39,6 +39,14 @@
     8.  term → factor (MULOP factor) *
     9.  factor → '(' expression ')' | NUM | ID
     
+###Mejoras posibles?
+- if then else
+- for
+- class
+- funciones con parametros y sus llamadas
+- switch
+- comma
+    
 ###Ejemplo 1
 
     const pi = 3.14;
