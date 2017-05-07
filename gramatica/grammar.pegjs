@@ -7,7 +7,7 @@ program
   } 
 
 block
-  = dec:declaration? fun:functions? st:statement{
+  = dec:declaration? fun:functions? st:statement?{
     return {
       declarations : dec,
       functions : fun,
@@ -16,32 +16,47 @@ block
   }
 
 declaration
-  = CONST cid:ID ASSIGN cv:NUM crest:(COMMA ID ASSIGN NUM)* SEMICOLON  VAR vid:ID vrest:(COMMA ID )* SEMICOLON{
+  = c:constants? v:variables?{
+    return {
+      constants : c,
+      variables : v
+    }
+  }
+
+constants
+  = CONST id:ID ASSIGN v:NUM rest:(COMMA ID ASSIGN NUM)* SEMICOLON{
     var result;
     result = [];
     result.push({
       type : 'constant',
-      id : cid,
-      value : cv,
+      left : id,
+      right : v,
     });
-    for(var i =0; i < crest.length; i++){
+    for(var i =0; i < rest.length; i++){
       result.push({
-        type : 'constant',
-        id : crest[i][1],
-        value : crest[i][3]
-      });
-    }
-    result.push({
-      type : 'variable',
-      id : vid
-    });
-    for(var i = 0; i<vrest.length; i++){
-      result.push({
-        type : 'variable',
-        id : vrest[i][1]
-      });
+       type : 'constant',
+       left : rest[i][1],
+        right : rest[i][3]
+     });
     }
     return result;
+  }
+  
+variables
+  = VAR id:ID rest:(COMMA ID)* SEMICOLON{
+  var result;
+  result = [];
+   result.push({
+     type : 'variable',
+     id : id
+   });
+   for(var i = 0; i<rest.length; i++){
+     result.push({
+       type : 'variable',
+       id : rest[i][1]
+     });
+   }
+  return result;
   }
 
 functions
@@ -168,7 +183,7 @@ _ = $[ \t\n\r]*
 
 LEFTPAR = _"("_
 RIGHTPAR = _")"_
-NUM = _ n:$[0-9]+ _ { return {type : 'NUMBER', value : n}; }
+NUM = _ n:$([0-9]+$([.][0-9]+)?) _ { return {type : 'NUMBER', value : n}; }
 ID = _ id:$([a-z_]i$([a-z0-9_]i*)) _ { return {type : 'ID', value : id}; }
 
 ADDOP = _ op:[+-] _ { return op; }
