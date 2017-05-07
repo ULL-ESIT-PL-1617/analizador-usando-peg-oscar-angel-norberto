@@ -10,6 +10,14 @@ h1 {
     text-align: center;
 }
 
+a {
+    font-size: 150%;
+    color: orange;
+}
+a:hover {
+    color: white;
+}
+
 #elements {
     text-align: center;
 }
