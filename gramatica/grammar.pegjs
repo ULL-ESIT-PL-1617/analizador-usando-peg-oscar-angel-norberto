@@ -110,6 +110,13 @@ statement
       statements : s
     };
   }
+  
+  / RETURN exp:expresion {
+      return {
+        type : 'RETURN',
+        value : exp
+      }
+    }
 
 condition
   = left:expresion comparison:COMPARISON right:expresion {
@@ -203,3 +210,4 @@ CONST = _"const"_
 SEMICOLON = _ ";" _
 COMMA = _","_
 FULLSTOP = _"."_
+RETURN = _ "return" _

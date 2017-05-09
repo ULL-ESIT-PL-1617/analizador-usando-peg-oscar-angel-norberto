@@ -33,21 +33,15 @@
     3. declaration → (const' ID '=' NUM (',' ID '=' NUM) * ';')?  ('var' ID (',' ID ) * ';')?
     4. functions → ('procedure' ID 'begin' block 'end')*
     5. statement → ID '=' expression | 'call' ID | 'if' condition 'then' statement | 'while' condition 'do' statement
-        | 'begin' statement (';' statement) * 'end'
+        | 'begin' statement (';' statement) * 'end' | 'return' expression
     6. condition → expression COMPARISON expression
     7.  expression → term ( ADDOP term) *  
     8.  term → factor (MULOP factor) *
     9.  factor → '(' expression ')' | NUM | ID
     
-### Mejoras posibles?
-- if then else
-- for
-- class
-- funciones con parametros y sus llamadas
-- switch
-- comma
+
     
-###Ejemplo 1
+### Ejemplo 1
 
     const pi = 3.14;
     var a;
